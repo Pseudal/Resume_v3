@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+.font-link {
+  font-family: 'Roboto', sans-serif;
+}
+html {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+html ::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+/* #ImportantImage{
+  z-index: 99 !important;
+} */
+#img{
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: MoveUpDown 1.5s linear infinite;
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+@keyframes MoveUpDown {
+  0%, 100% {
+    bottom: 175px;
+  }
+  50% {
+    bottom: 225px;
+  }
+}
+
+
+
+

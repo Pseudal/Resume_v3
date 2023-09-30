@@ -1,0 +1,33 @@
+{
+  "name": "resume_v3",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^3.11.0",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fullpage/react-fullpage": "^0.1.40",
+    "@mui/icons-material": "^5.14.11",
+    "@mui/material": "^5.14.11",
+    "aos": "^3.0.0-beta.6",
+    "next": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-vertical-timeline-component": "^3.6.0",
+    "sweetalert2": "^11.7.31",
+    "swiper": "^10.3.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-next": "latest",
+    "postcss": "latest",
+    "tailwindcss": "latest"
+  }
+}
