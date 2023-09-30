@@ -112,6 +112,7 @@ const Snake = () => {
     return false; // Retourner false si pas de collision avec la pomme.
   };
   const gameLoop = () => { // Boucle de jeu principale.
+    gameDivRef.current.focus(); // Mettre le focus sur la div du jeu pour capturer les événements clavier.
     const snakeCopy = JSON.parse(JSON.stringify(snake)); // Copie profonde du serpent.
     const newSnakeHead = [snakeCopy[0][0] + dir[0], snakeCopy[0][1] + dir[1]]; // Nouvelle tête du serpent basée sur la direction.
     snakeCopy.unshift(newSnakeHead); // Ajouter la nouvelle tête au serpent.
@@ -138,14 +139,19 @@ const Snake = () => {
 
   return (
     <div className="h-screen bg-gradient-to-r from-[#ff5f6d] to-[#ffc371] flex justify-center items-center"> {/* Conteneur principal */}
-        <div
-        className="hidden"
+
+
+      <div class="container  mx-auto bg-white rounded max-w-6xl md:min-w-6xl md:min-h-5xl">
+
+      <div
+        className={showStartButton ? 'hidden' : 'block'}
           ref={gameDivRef} // Référence pour la div du jeu.
           role="button" // Rôle pour l'accessibilité.
           tabIndex={0} // Index de tabulation pour permettre la focalisation.
           onKeyDown={(e) => moveSnake(e, e)} // Gestionnaire d'événements pour les touches du clavier.
         >
           <canvas
+          className="block  flex flex-col justify-center md:min-w-6xl md:min-h-5xl"
             style={{ // Style du canvas.
               border: "1px solid black",
               width: "100%",
@@ -160,8 +166,7 @@ const Snake = () => {
           
         </div>
 
-      <div class="container px-6 py-12 mx-auto bg-white rounded max-w-6xl">
-        <div className="container flex flex-col justify-center p-4 mx-auto md:p-8">
+        <div  className={!showStartButton ? 'hidden' : 'block container flex flex-col justify-center p-4 mx-auto md:p-8 md:min-w-6xl md:min-h-5xl'}>
         <h2 className="mb-12 text-4xl font-bold leadi text-center sm:text-5xl">Besoin d'une précision?</h2>
         <div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
           <div>

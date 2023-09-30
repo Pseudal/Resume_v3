@@ -8,4 +8,4 @@ const Game = () => {
     );
 };
 
-export default _Game;
+export default Game;
