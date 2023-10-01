@@ -12,7 +12,7 @@ const Home = () => {
                     </h1>
                 </div>
                 <div className="basis-1/3 grid content-start pt-5">
-                    <h1 className="text-center text-5xl text-white">
+                    <h1 className="text-center text-3xl text-white">
                         Etudiant chez Epitech
                     </h1>
                 </div>

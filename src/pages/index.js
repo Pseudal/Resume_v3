@@ -1,46 +1,42 @@
 'use client';
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import ReactFullpage from "@fullpage/react-fullpage";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import HomePage from "./components/home/_Home";
-import Info1 from "./components/home/_Info1";
-import Portolio from "./components/home/_Portolio";
-import Snake from "./components/home/_Snake";
-import Contact from "./components/home/_Contact";
+import SmallView from "./components/Home_Mobile/_SmallView";
+import DesktopView from "./components/home/_DesktopView";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
+    const [isDesktop, setDesktop] = useState(false);
+    const [isTablet, setTablet] = useState(false);
+    const [isMobile, setMobile] = useState(false);
 
-    const
-        onLeave = (origin, destination, direction) => {
-            console.log("onLeave", { origin, destination, direction });
-            // arguments are mapped in order of fullpage.js callback arguments do something
-            // with the event
-        }
+    useEffect(() => {
+        // Initialize the states based on the window size
+        const updateMedia = () => {
+            setDesktop(window.innerWidth > 1650 );
+            setTablet(window.innerWidth > 1024 && window.innerWidth < 1650);
+            setMobile(window.innerWidth > 0 && window.innerWidth < 1024);
+        };
 
-  return (
-    <ReactFullpage
-    scrollBar='true'
-    navigation
-    licenseKey = {'GPLv3'}
-    onLeave={onLeave}
-    scrollHorizontally = {true}
-    scrollOverflow= {false}
+        // Update the states when the window size changes
+        window.addEventListener("resize", updateMedia);
 
-    render={() =>
-        console.log("render prop change") || (
-            <ReactFullpage.Wrapper>
-                <div style={{height:"100vh", width:'100%', backgroundColor:"red"}} className="section"><HomePage/></div>
-                <div style={{height:"100vh", width:'100%', backgroundColor:"red"}} className="section"><Info1/></div>
-                <div style={{height:"100vh", width:'100%', backgroundColor:"red"}} className="section"><Portolio/></div>
-                <div style={{height:"100vh", width:'100%', backgroundColor:"red"}} className="section"><Snake/></div>
-                <div style={{height:"100vh", width:'100%', backgroundColor:"red"}} className="section"><Contact/></div>
-            </ReactFullpage.Wrapper>
-        )
-    }
-/>
-  )
+        // Call updateMedia once on component mount to initialize the states
+        updateMedia();
+
+        // Remove the event listener on component unmount
+        return () => window.removeEventListener("resize", updateMedia);
+    }, []);
+
+    return (
+        <>
+            {isMobile && <SmallView />}
+            {isTablet && <SmallView />}
+            {isDesktop && <DesktopView />}
+        </>
+    );
 }

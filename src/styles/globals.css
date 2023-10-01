@@ -37,19 +37,35 @@ body {
 /* #ImportantImage{
   z-index: 99 !important;
 } */
-#img{
+#img {
   left: 50%;
   transform: translate(-50%, -50%);
-  animation: MoveUpDown 1.5s linear infinite;
+  animation: MoveUpDownLargeScreen 1.5s linear infinite;
   filter: invert(100%);
   -webkit-filter: invert(100%);
 }
-@keyframes MoveUpDown {
+
+@keyframes MoveUpDownLargeScreen {
   0%, 100% {
     bottom: 175px;
   }
   50% {
     bottom: 225px;
+  }
+}
+
+@media screen and (max-height: 800px) {
+  #img {
+    animation: MoveUpDownSmallScreen 1.5s linear infinite;
+  }
+
+  @keyframes MoveUpDownSmallScreen {
+    0%, 100% {
+      bottom: -25px;
+    }
+    50% {
+      bottom: 75px;
+    }
   }
 }
 

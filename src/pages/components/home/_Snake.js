@@ -150,7 +150,7 @@ const Snake = () => {
     <div className="h-screen bg-gradient-to-r from-[#ff5f6d] to-[#ffc371] flex justify-center items-center"> {/* Conteneur principal */}
 
 
-      <div class="container  mx-auto bg-white rounded max-w-6xl md:min-w-6xl md:min-h-5xl rounded-lg" data-aos="fade-zoom-in" data-aos-delay="100" data-aos-offset="300">
+      <div className="container  mx-auto bg-white rounded max-w-6xl md:min-w-6xl md:min-h-5xl rounded-lg" data-aos="fade-zoom-in" data-aos-delay="100" data-aos-offset="300">
 
       <div
         className={showStartButton ? 'hidden' : 'block'}
