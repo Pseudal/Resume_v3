@@ -88,9 +88,9 @@ const Contact = () => {
                 <p className="text-xl text-white pb-8 leading-relaxed font-normal lg:pr-4">
                   Vous avez une question à me poser ? Vous êtes intéressé par un
                   partenariat avec moi ? Vous avez des suggestions ou vous
-                  voulez simplement dire Bonjour ? N'hésitez pas à me contacter
-                  !<br></br>Je suis actuellement à la recherche d'une
-                  alternance, alors n'hésitez pas à me faire part de toute
+                  voulez simplement dire Bonjour ? N&apos;hésitez pas à me contacter
+                  !<br></br>Je suis actuellement à la recherche d&apos;une
+                  alternance, alors n&apos;hésitez pas à me faire part de toute
                   opportunité ou proposition.
                 </p>
                 <div className="flex pb-4 items-center">
@@ -246,8 +246,8 @@ const Contact = () => {
                                 <label htmlFor="default-checkbox" className="ml-2 text-sm font-medium text-black ">Je souhaite une copie</label>
                             </div> */}
                       <p className="text-xs leading-3 text-gray-600 mt-2">
-                        En cliquant sur envoyer, veuillez noter qu'aucune donnée
-                        n'est stockée ou traitée.
+                        En cliquant sur envoyer, veuillez noter qu&apos;aucune donnée
+                        n&apos;est stockée ou traitée.
                       </p>
                       <div className="flex items-center justify-center w-full">
                         <button
@@ -282,7 +282,7 @@ const Contact = () => {
                         Succès!
                       </h3>
                       <p class="text-gray-600 my-2">
-                        Votre message à bien été envoyé, j'y répondrai le plus
+                        Votre message à bien été envoyé, j&apos;y répondrai le plus
                         rapidement possible!
                       </p>
                       <p>Bonne journée et merci beaucoup!</p>

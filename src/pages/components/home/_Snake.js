@@ -1,26 +1,14 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react"; // Importation des hooks et de React.
-import { useInterval } from "../utility/_CustomHook"; // Importation du hook d'intervalle personnalisé.
+import { useInterval } from "../../../utility/_CustomHook"; // Importation du hook d'intervalle personnalisé.
+import Swal from "sweetalert2";
 
 const Snake = () => {
-  const horizontalScrollRef = useRef();
-
-  const handleScrollRight = () => {
-    if(horizontalScrollRef.current) {
-      horizontalScrollRef.current.scrollLeft += 200; // Ou une autre valeur pour régler la distance de défilement
-    }
-  };
-
-  const handleScrollLeft = () => {
-    if(horizontalScrollRef.current) {
-      horizontalScrollRef.current.scrollLeft -= 200; // Ou une autre valeur pour régler la distance de défilement
-    }
-  };
-
+  
   const gameDivRef = useRef(null); // Référence pour la div du jeu. // Utilisé pour mettre le focus sur le jeu au démarrage.
   
   let SCORE = 0; // Score initial du jeu.
-  let SCALE = 20; // Échelle du jeu, chaque carré a une taille de 20x20 pixels.
+  let SCALE = 30; // Échelle du jeu, chaque carré a une taille de 20x20 pixels.
 
   const [CANVAS_SIZE, setCanvasSize] = useState([0, 0]);
   
@@ -49,6 +37,8 @@ const Snake = () => {
   const [showStartButton, setShowStartButton] = useState(true); // État du bouton de démarrage.
 
   const startGame = () => { // Fonction pour démarrer le jeu.
+    setScore(0)
+    SPEED = 150
     setSnake(SNAKE_START); // Réinitialisation de la position du serpent.
     setApple(APPLE_START); // Réinitialisation de la position de la pomme.
     setDirection([0, -1]); // Réinitialisation de la direction.
@@ -57,9 +47,28 @@ const Snake = () => {
     setShowStartButton(false); // Cacher le bouton de démarrage.
     gameDivRef.current.focus(); // Mettre le focus sur la div du jeu pour capturer les événements clavier.
   };
-  const endGame = () => { // Fonction pour terminer le jeu.
+  const endGame = () => { // Fonction pour terminer le jeu.    
     setSpeed(null); // Arrêter le jeu en réglant la vitesse sur null.
     setGameOver(true); // Mettre l'état de fin de jeu à true.
+    Swal.fire({
+      icon: 'error',
+      title: 'Perdu!',
+      footer: '<p >Vous avez fait un score de '+ score +'</p>',
+      showDenyButton: true,
+      showConfirmButton: true,
+      confirmButtonText: 'Continuer',
+      denyButtonText: `Quitter`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        startGame();
+      } else if (result.isDenied) {
+        setShowStartButton(true)
+      } else {
+        setShowStartButton(true)
+      }
+    })
+
   };
 
   const moveSnake = (event) => { // Fonction pour déplacer le serpent.
@@ -141,7 +150,7 @@ const Snake = () => {
     <div className="h-screen bg-gradient-to-r from-[#ff5f6d] to-[#ffc371] flex justify-center items-center"> {/* Conteneur principal */}
 
 
-      <div class="container  mx-auto bg-white rounded max-w-6xl md:min-w-6xl md:min-h-5xl">
+      <div class="container  mx-auto bg-white rounded max-w-6xl md:min-w-6xl md:min-h-5xl rounded-lg" data-aos="fade-zoom-in" data-aos-delay="100" data-aos-offset="300">
 
       <div
         className={showStartButton ? 'hidden' : 'block'}
@@ -151,7 +160,7 @@ const Snake = () => {
           onKeyDown={(e) => moveSnake(e, e)} // Gestionnaire d'événements pour les touches du clavier.
         >
           <canvas
-          className="block  flex flex-col justify-center md:min-w-6xl md:min-h-5xl"
+          className="block flex flex-col justify-center md:min-w-6xl md:min-h-5xl rounded"
             style={{ // Style du canvas.
               border: "1px solid black",
               width: "100%",
@@ -161,40 +170,40 @@ const Snake = () => {
             width={`${CANVAS_SIZE[0]}px`} // Largeur du canvas.
             height={`${CANVAS_SIZE[1]}`} // Hauteur du canvas.
           >
-            {gameOver && <div>GAME OVER!</div>} // Afficher "GAME OVER!" si le jeu est terminé.
           </canvas>      
           
         </div>
 
-        <div  className={!showStartButton ? 'hidden' : 'block container flex flex-col justify-center p-4 mx-auto md:p-8 md:min-w-6xl md:min-h-5xl'}>
-        <h2 className="mb-12 text-4xl font-bold leadi text-center sm:text-5xl">Besoin d'une précision?</h2>
+        <div  className={!showStartButton ? 'hidden' : 'block container flex flex-col justify-center p-4 mx-auto md:p-8 md:min-w-6xl md:min-h-5xl relative'}>
+        <button className="absolute top-0 left-0 w-10 h-full bg-red-500 flex items-center justify-center rounded-l-lg" onClick={startGame}>
+          <span className="transform -rotate-90">Snake</span>
+        </button>
+          
+        <h2 className="mb-12 text-4xl font-bold leadi text-center sm:text-5xl">Besoin d&apos;une précision?</h2>
         <div className="grid gap-10 md:gap-8 sm:p-3 md:grid-cols-2 lg:px-12 xl:px-32">
           <div>
             <h3 className="font-semibold">Epitech?</h3>
-            <p className="mt-1 dark:text-gray-400">L'École Epitech, basée en France, est spécialisée dans l'enseignement de l'informatique et des technologies de l'information. Elle forme des experts en informatique à travers un programme innovant et intensif. Le curriculum d'Epitech met l'accent sur les projets pratiques, l'apprentissage par la réalisation, et l'autonomie des étudiants.</p>
+            <p className="mt-1 dark:text-gray-400">L&apos;École Epitech, basée en France, est spécialisée dans l&apos;enseignement de l&apos;informatique et des technologies de l&apos;information. Elle forme des experts en informatique à travers un programme innovant et intensif. Le curriculum d&apos;Epitech met l&apos;accent sur les projets pratiques, l&apos;apprentissage par la réalisation, et l&apos;autonomie des étudiants.</p>
           </div>
           <div>
             <h3 className="font-semibold">Pourquoi moi?</h3>
-            <p className="mt-1 dark:text-gray-400">Motivé et engagé, je suis un étudiant passionné par le développement et la technologie, ayant une expérience pratique dans la création de solutions web innovantes. Ma soif d'apprendre et mon désir de résoudre des problèmes complexes en informatique me motivent à approfondir continuellement mes connaissances et compétences, tout en restant à la pointe des évolutions technologiques.</p>
+            <p className="mt-1 dark:text-gray-400">Motivé et engagé, je suis un étudiant passionné par le développement et la technologie, ayant une expérience pratique dans la création de solutions web innovantes. Ma soif d&apos;apprendre et mon désir de résoudre des problèmes complexes en informatique me motivent à approfondir continuellement mes connaissances et compétences, tout en restant à la pointe des évolutions technologiques.</p>
           </div>
           <div>
             <h3 className="font-semibold">Quels sont mes domaines de prédilection?</h3>
-            <p className="mt-1 dark:text-gray-400">En tant qu'étudiant en développement, mes domaines de prédilection se concentrent principalement sur le développement de fonctionnalités. Bien que je ne sois pas encore un expert, j'apprécie l'aspect technique du développement et je cherche constamment à améliorer mes compétences dans ce domaine. Cependant, je reconnais que l'UX n'est pas mon point fort actuel, mais je suis ouvert à apprendre et à progresser dans ce domaine au fil du temps.</p>
+            <p className="mt-1 dark:text-gray-400">En tant qu&apos;étudiant en développement, mes domaines de prédilection se concentrent principalement sur le développement de fonctionnalités. Bien que je ne sois pas encore un expert, j&apos;apprécie l&apos;aspect technique du développement et je cherche constamment à améliorer mes compétences dans ce domaine. Cependant, je reconnais que l&apos;UX n&apos;est pas mon point fort actuel, mais je suis ouvert à apprendre et à progresser dans ce domaine au fil du temps.</p>
           </div>
           <div>
-            <h3 className="font-semibold">J'aimerais voir ce que tu aprend en cours.</h3>
-            <p className="mt-1 dark:text-gray-400">Curieux de découvrir ce que j'apprends en cours ? Explorez ma timeline académique pour avoir un aperçu détaillé de mon parcours d'apprentissage, des compétences acquises et des projets réalisés. Vous y trouverez une représentation claire de mon évolution et de ma maîtrise dans divers domaines de l'informatique et du développement. [Lien vers la timeline]</p>
+            <h3 className="font-semibold">J&apos;aimerais voir ce que tu aprend en cours.</h3>
+            <p className="mt-1 dark:text-gray-400">Curieux de découvrir ce que j&apos;apprends en cours ? Explorez ma timeline académique pour avoir un aperçu détaillé de mon parcours d&apos;apprentissage, des compétences acquises et des projets réalisés. Vous y trouverez une représentation claire de mon évolution et de ma maîtrise dans divers domaines de l&apos;informatique et du développement. Vous pouvez cliquer sur le bouton de droite pour voir la timeline.</p>
           </div>
         </div>
+        <a href="/timeline" target="_blank">
+          <button className="absolute top-0 right-0 w-10 h-full bg-blue-500 flex items-center justify-center rounded-r-lg" >
+            <span className="transform rotate-90">Timeline</span>
+          </button>
+        </a>
       </div>
-      {showStartButton && ( // Afficher le bouton de démarrage si showStartButton est true.
-      <button className="absolute w-7 h-3 " onClick={startGame}> {/* Bouton de démarrage */}
-          <img
-            src="https://www.nicepng.com/png/full/392-3926192_play-icon-free-download-png-and-vector-black.png"
-            alt="" // Icône de lecture.
-          />
-        </button>
-      )}
     </div>
       
     </div>

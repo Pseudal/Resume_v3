@@ -3,7 +3,7 @@ import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timel
 import 'react-vertical-timeline-component/style.min.css';
 
 import StarIcon from '@mui/icons-material/Star';
-import {TimelineData} from "./components/timeline/timeLineData"
+import {TimelineData} from "../utility/timeLineData"
 
 const timeline = () => {
     console.log(TimelineData)
@@ -13,6 +13,7 @@ const timeline = () => {
                 {TimelineData && TimelineData.map((data, index) => {
                         return (
                             <VerticalTimelineElement
+                            key={index}
                             className="vertical-timeline-element--education"
                             date={data.date}
                             iconStyle={data.color}

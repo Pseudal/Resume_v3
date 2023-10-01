@@ -76,7 +76,7 @@ const Info1 = () => {
                 className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
                 style={{
                   backgroundImage:
-                    "url('https://cdna.artstation.com/p/assets/images/images/045/202/798/medium/humberto-cunha-emil.jpg?1642157460')",
+                    "url('./moi.jpg')",
                 }}
               ></div>
 
@@ -103,7 +103,7 @@ const Info1 = () => {
                 Localisé en Ile-de-France
               </p>
               <p className="pt-6 text-sm text-black">
-                Passionné par le développement , j'ai débuté dans la création d'applications web. Mon intérêt croissant pour la programmation m'oriente désormais vers la sécurité informatique et l'intelligence artificielle. Toujours avide d'apprendre, je suis attentif aux dernières tendances technologiques.
+                Passionné par le développement , j&apos;ai débuté dans la création d&apos;applications web. Mon intérêt croissant pour la programmation m&apos;oriente désormais vers la sécurité informatique et l&apos;intelligence artificielle. Toujours avide d&apos;apprendre, je suis attentif aux dernières tendances technologiques.
               </p>
 
               <div className="flex justify-around">
@@ -141,7 +141,7 @@ const Info1 = () => {
                 data-aos-offset="300">
             <img
               style={{width: "360px", height: '540px', objectFit: 'cover'}}
-              src="https://cdna.artstation.com/p/assets/images/images/045/202/798/medium/humberto-cunha-emil.jpg?1642157460"
+              src="./moi.jpg"
               className="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"
             />
           </div>
