@@ -56,6 +56,16 @@ export const TimelineData = [{
         name:"React",
         logo:"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png"
     }]
+},{
+    title:`Premier pas avec javascript`,
+    date:"02-10-2023",
+    icon: <SchoolIcon />,
+    description:"Première utilisation de javascript dans le 'cursus' Epitech, decouverte de javascript, sur des exercices déjà fait en Python",
+    color:{background: 'rgb(233, 30, 99)', color: '#fff'},
+    techno:[{
+        name:"Javascript",
+        logo:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXuYiXPX0q46MRrhMb_xyULtmc7dKvEPkFNsaFBhJIRRkBQrbEfEQGjQZYJ0ALUZtgSXE&usqp=CAU"
+    }]
 },
 ]
 
