@@ -103,7 +103,7 @@ const Info1 = () => {
             <div className="p-4 md:p-8 text-center lg:text-left">
               <div
                 id="ImportantImage"
-                className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center"
+                className="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-36 w-36 bg-cover bg-center"
                 style={{
                   backgroundImage: "url('./moi.jpg')",
                 }}

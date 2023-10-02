@@ -110,7 +110,7 @@ const Portolio = () => {
   return (
     <div className="h-screen bg-gradient-to-r from-[#a606a6] via-[#7846bc] via-[#435ec1] via-[#006cb8] to-[#0074a6]">
       <div className="mx-auto h-full flex flex-col">
-        <div className="basis-1/6 grid content-end">
+        <div className="h-[12%] grid content-end">
           <h1 className="text-center text-5xl md:text-6xl text-white font-bold  ">
             Projets
           </h1>
